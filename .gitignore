@@ -1,0 +1,11 @@
+.mission/
+.DS_Store
+build/
+build-*/
+out/
+dist/
+node_modules/
+.env
+.env.*
+!.env.example
+*.log

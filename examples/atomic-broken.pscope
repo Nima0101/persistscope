@@ -1,0 +1,12 @@
+# Acknowledges the replacement without persisting its namespace entry.
+persistscope 1
+initial config old
+run
+create staging
+write staging new
+fsync staging
+rename staging config
+ack
+check
+expect config old new
+expect_after_ack config new

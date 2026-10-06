@@ -1,0 +1,24 @@
+name: Bug report
+description: Report an incorrect result, crash, or CLI problem.
+body:
+  - type: textarea
+    id: scenario
+    attributes:
+      label: Minimal synthetic scenario
+      description: Include input and command; remove confidential contents.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Version and environment
+      description: Include operating system, compiler, build type, and sanitizer settings.
+    validations:
+      required: true

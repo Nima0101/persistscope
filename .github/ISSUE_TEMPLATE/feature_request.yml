@@ -1,0 +1,17 @@
+name: Improvement proposal
+description: Propose a useful model, API, or workflow improvement.
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and concrete protocol
+      description: Describe what you cannot currently express or verify.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior and trade-offs
+      description: Include model assumptions and a possible regression test.
+    validations:
+      required: true

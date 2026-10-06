@@ -1,0 +1,20 @@
+# Commit phase of a PREPARED transaction: redo files already durable.
+# Preparation/commit-marker creation is outside this scenario's scope.
+# Recovery rolls forward any remaining redo file, including at cut zero.
+persistscope 1
+initial left old
+initial right old
+initial redo-left new
+initial redo-right new
+run
+rename redo-left left
+rename redo-right right
+sync_dir
+ack
+recover
+rename_if_exists redo-left left
+rename_if_exists redo-right right
+check
+equal left right
+expect left new
+expect_after_ack right new

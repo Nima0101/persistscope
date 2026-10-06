@@ -1,0 +1,9 @@
+# A two-byte in-place update can leave a mixed record.
+persistscope 1
+initial record AA
+run
+patch record 0 BB
+fsync record
+ack
+check
+expect record AA BB

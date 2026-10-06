@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/Nima0101/persistscope/security/advisories/new
+    about: Report exploitable defects privately; use synthetic input.

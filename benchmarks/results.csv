@@ -1,0 +1,7 @@
+shape,events,samples,nodes,outcomes,status,median_ms,min_ms,max_ms
+chain,8,7,165,45,pass,0.142,0.122,0.335
+chain,12,7,455,91,pass,0.252,0.246,0.271
+chain,16,7,969,153,pass,0.424,0.421,0.435
+independent,8,7,1013,511,pass,6.652,6.023,9.469
+independent,12,7,16369,8191,pass,92.527,62.610,139.607
+independent,16,7,262125,131071,pass,3144.424,2923.076,3247.745
