@@ -1,5 +1,7 @@
 # PersistScope
 
+[![CI](https://github.com/Nima0101/persistscope/actions/workflows/ci.yml/badge.svg)](https://github.com/Nima0101/persistscope/actions/workflows/ci.yml)
+
 Find the crash that breaks your file update protocol—before it becomes a recovery incident.
 
 PersistScope is a dependency-free C++20 library and CLI that explores crash states of small persistence protocols. Describe writes, renames, syncs, acknowledgement, and recovery; receive either a complete result under the model, a concrete counterexample, or an explicit incomplete result.
@@ -96,7 +98,15 @@ See the [C++ API and installation guide](docs/api.md) and the [reproducible benc
 
 ## Platforms and security
 
-The implementation targets GCC, Clang, and MSVC. Linux, macOS, and Windows verification is pending the initial CI runs; build portability is not a claim about those systems' filesystem semantics.
+The following configurations passed build, all four test suites, installed-library consumption, and demo checks in [hosted CI](https://github.com/Nima0101/persistscope/actions/runs/37533911024):
+
+| Host | Compiler |
+|---|---|
+| Ubuntu 24.04 x64 | GCC 13.3 |
+| macOS 26 arm64 | AppleClang 21 |
+| Windows Server 2025 x64 | MSVC 19.51 |
+
+Linux and macOS also passed ASan/UBSan. CI runs formatting, clang-tidy, Linux libFuzzer, and secret scanning; CodeQL C++ analysis passed with no open alerts at release preparation. Build portability is not a claim about host filesystem semantics. Other OS/compiler versions have not been verified.
 
 The CLI reads one scenario and writes results to standard output. Virtual filenames never become host paths. There is no network access or command execution. Reports include scenario contents, so use synthetic data. Embedded C++ callbacks execute with your process's privileges. See [SECURITY.md](SECURITY.md) and the [threat model](docs/threat-model.md).
 
