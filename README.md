@@ -20,6 +20,8 @@ flowchart LR
     D --> I[INCOMPLETE on budget or cancellation]
 ```
 
+Created and maintained by [Nima Khaki](https://github.com/Nima0101).
+
 ## Five-minute quickstart
 
 Requires CMake 3.20+, a C++20 compiler, and Python 3.9+ for integration tests. No third-party runtime libraries are required.
