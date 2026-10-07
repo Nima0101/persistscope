@@ -334,9 +334,8 @@ int output(const ps::Result &result, bool json) {
   }
   return result.status == ps::Status::pass ? 0 : result.status == ps::Status::fail ? 1 : 3;
 }
-} // namespace
 
-int main(int argc, char **argv) {
+int run(int argc, char **argv) {
   bool json = false;
   for (int i = 1; i < argc; ++i) {
     json = json || std::string_view(argv[i]) == "--json";
@@ -410,6 +409,15 @@ int main(int argc, char **argv) {
     } else {
       std::cerr << "INVALID: " << quote(error.what()) << '\n';
     }
+    return 2;
+  }
+}
+} // namespace
+
+int main(int argc, char **argv) {
+  try {
+    return run(argc, argv);
+  } catch (...) {
     return 2;
   }
 }
