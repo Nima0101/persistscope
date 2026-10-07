@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PERSISTSCOPE_PERSISTSCOPE_HPP_INCLUDED
+#define PERSISTSCOPE_PERSISTSCOPE_HPP_INCLUDED
 
 #include <cstddef>
 #include <cstdint>
@@ -76,3 +77,5 @@ Witness replay(const Scenario &scenario, std::size_t cut,
                const std::vector<std::size_t> &durable_events, const Invariant &invariant);
 std::string_view status_name(Status status);
 } // namespace persistscope
+
+#endif // PERSISTSCOPE_PERSISTSCOPE_HPP_INCLUDED
