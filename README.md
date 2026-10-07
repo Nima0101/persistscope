@@ -119,3 +119,13 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for build, sanitizer, and formatting comm
 Next work: crashes during recovery, additional explicit persistence models, smaller counterexamples, and adapters that reduce the gap between application code and modeled traces. Each changes the verification boundary and needs its own tests.
 
 MIT licensed. Contributions to model semantics, counterexamples, and documentation are welcome.
+
+## Optional safe-update reference
+
+The separately built [safe-update reference](safe-update/README.md) stages signed
+payloads using OpenSSL 3, atomically activates a trial, and confirms health or
+rolls back on restart. Its tests include signature/hash rejection, abrupt process
+interruption and a broken/fixed PersistScope model pair with witness replay.
+It currently uses POSIX filesystem APIs; the core checker remains portable and
+dependency-free. The reference is not part of the existing release and does not
+claim physical power-loss durability.

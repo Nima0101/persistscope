@@ -1,0 +1,12 @@
+# Abstraction of save(): complete state record, same-directory atomic rename.
+persistscope 1
+initial state old
+run
+create staged
+write staged new
+fsync staged
+rename staged state
+ack
+check
+expect state old new
+expect_after_ack state new

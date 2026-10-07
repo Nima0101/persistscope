@@ -41,3 +41,11 @@ The [public API](../include/persistscope/persistscope.hpp) owns strings and cont
 The extension point is a trusted C++ invariant callback. Scenario recovery remains declarative. There are no dynamically loaded plugins or arbitrary CLI checker commands.
 
 Changing persistence dependencies changes the meaning of PASS. New semantics should receive a new model identifier and regression tests; they should not silently reinterpret an existing trace.
+
+## Optional filesystem reference
+
+The separately built [safe-update library](../safe-update/README.md) exercises
+signed staging, atomic state replacement and health rollback using POSIX APIs.
+It depends on OpenSSL 3 and does not change the dependency-free model checker.
+Its model pair covers the state-record commit sequence; process interruption
+tests and modeled crash exploration remain distinct evidence.
