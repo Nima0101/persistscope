@@ -1,0 +1,27 @@
+name: Safe-update reference
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reference:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, macos-14]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - run: cmake -S . -B build-agent-verify -DCMAKE_BUILD_TYPE=Release
+      - run: cmake --build build-agent-verify --parallel 2
+      - run: ctest --test-dir build-agent-verify --output-on-failure
+      - run: safe-update/scripts/verify-local.sh
+      - run: cmake -S safe-update -B safe-update/build-sanitize -DCMAKE_BUILD_TYPE=Debug -DSAFE_UPDATE_SANITIZERS=ON
+      - run: cmake --build safe-update/build-sanitize --parallel 2
+      - run: ctest --test-dir safe-update/build-sanitize --output-on-failure

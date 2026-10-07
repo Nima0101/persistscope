@@ -34,3 +34,10 @@ The implementation must also avoid lost dependencies, incorrect inode/name assoc
 No remote control plane, signatures, credentials, telemetry, or network service exists. Replay means replaying a modeled crash witness, not executing external side effects. Concurrent protocol execution, syscall errors, hostile devices, and crashes during recovery are outside the model.
 
 Report implementation vulnerabilities through [SECURITY.md](../SECURITY.md).
+
+## Optional updater
+
+The exclusions above describe the model checker. The separately built
+[safe-update reference](../safe-update/README.md) performs filesystem I/O and
+signature verification. Its key provisioning, directory trust, health callback,
+anti-downgrade exclusions and storage limitations are documented separately.

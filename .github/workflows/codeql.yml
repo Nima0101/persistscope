@@ -21,4 +21,6 @@ jobs:
           build-mode: manual
       - run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
       - run: cmake --build build --parallel 2
+      - run: cmake -S safe-update -B safe-update/build-codeql -DCMAKE_BUILD_TYPE=Debug
+      - run: cmake --build safe-update/build-codeql --parallel 2
       - uses: github/codeql-action/analyze@2892aa5e19bbd11bc0cff5427e3b750a04d9e3c2 # v4
